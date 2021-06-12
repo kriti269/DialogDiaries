@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    .form-div{
+        margin-top: 5%;
+        text-align: center;
+        width: 100%;
+
+    }
+
+    .title,.author,.content, .image, .category{
+        width: 100%;
+        display: flex;
+        /* background-color: #F7F7F7; */
+        padding: 10px;
+    }
+
+    label
+    {
+        width: 20%;
+        font-size: large;
+    }
+    span{
+        width: 100%;
+    }
+    #id_image{
+        width: 100%;
+        background-color: white;
+    }
+    button
+    {
+        background-color: #A90101;
+        width: 20%;
+        height: 10%;
+        color:honeydew ;
+    }
+
+    .btn-danger{
+        width: inherit;
+    }
+
+    textarea
+    {
+        width: 90%;
+        height: 80px;
+    }
+
+    .category select{
+        width: inherit;
+    }
+
+</style>
+
+<div class="form-div">
+    <h1>New Post</h1>
+    <form class="post-form" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="title">
+            <label for="title">Title</label>
+            <span>{{ form.title }}</span>
+        </div>
+        <div class="content">
+            <label for="content">Content</label>
+            <span>{{ form.content }}</span>
+        </div>
+        <div class="category">
+            <label for="category">Category</label>
+            <span>{{ form.category }}</span>
+        </div>
+        <div class="image">
+            <label for="image">Add Image</label>
+            <span>{{ form.image }}</span>
+        </div>
+        <!-- {{ form.as_p }} -->
+        <button type="submit" name="button">Save</button>
+    </form>
+</div>
+{% endblock %}

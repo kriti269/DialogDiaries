@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container sign-in-container">
+    <div class="row">
+        <!-- Sign In Column -->
+        <div class="col-md-12 mt-3 left sign-in-col">
+            <div class="card mb-4">
+                <div class="card-body sign-in-bg">
+                </div>
+                <div class=" sign-in-card">
+                    <h2>Sign In</h2>
+                    <form class="contact-form validate-form" method="POST" action="{% url 'authenticate' %}">
+                        {% csrf_token %}
+
+                        <div class="input-container first-name-container">
+                            <i class="fa fa-address-card icon"></i>
+                            <input class="input-field" type="text" placeholder="First Name" name="first_name">
+                        </div>
+
+                        <div class="input-container last-name-container">
+                            <i class="fa fa-address-card icon"></i>
+                            <input class="input-field" type="text" placeholder="Last Name" name="last_name">
+                        </div>
+
+                        <div class="input-container user-name-container">
+                            <i class="fa fa-user icon"></i>
+                            <input class="input-field" type="text" placeholder="Username" name="username">
+                        </div>
+
+                        <div class="input-container password-container">
+                            <i class="fa fa-key icon"></i>
+                            <input class="input-field" type="password" placeholder="Password" name="password1">
+                        </div>
+
+                        <div class="input-container password2-container">
+                            <i class="fa fa-key icon"></i>
+                            <input class="input-field" type="password" placeholder="Re-Type Password" name="password2">
+                        </div>
+
+                        <div class="input-container email-container">
+                            <i class="fa fa-envelope icon"></i>
+                            <input class="input-field" type="text" placeholder="Email" name="email">
+                        </div>
+                        <div class="btn-area">
+                            <button type="button" class="btn btn-login">Login</button>
+                            <button type="button" class="btn btn-register">Register</button>
+                        </div>
+                        <div class="isa_error validation-error">
+                            <i class="fa fa-times-circle"></i>{{login_error}}
+                        </div>
+                        {% if login_error %}
+                        <div class="isa_error">
+                            <i class="fa fa-times-circle"></i>{{login_error}}
+                        </div>
+                        {% endif %}
+                        {% if register_error %}
+                        <div class="isa_error">
+                            <i class="fa fa-times-circle"></i>{{register_error}}
+                        </div>
+                        {% endif %}
+                        {% if register_success %}
+                        <div class="isa_success">
+                            <i class="fa fa-check"></i>{{register_success}}
+                        </div>
+                        {% endif %}
+                        <input type="hidden" id="next" name="next" value={{next}}>
+                        <input type="hidden" id="post" name="post" value= {{post}}>
+                        <input type="hidden" id="register" name="register" value= {{register_error}}>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+{%endblock%}

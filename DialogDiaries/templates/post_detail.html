@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block content %}
+{% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+
+<div class="margin-top container">
+  <div>
+    <div class="col-md-9 card mb-4  mt-3 left  top">
+      <div class="card-body">
+        <h1>{% block title %} {{ post.title }} {% endblock title %}</h1>
+        {% if post.category %}
+        <div class="isa_info">
+            <i class="fa fa-list-alt"></i>
+          {{ post.category }}
+        </div>
+        {% endif %}
+        {% if post.image %}
+        <img class="post-image" src="../media/{{post.image}}" style="height: 200px; width: 300px;">
+        {% endif %}
+        <p class=" text-muted"> <a href="{% url 'post_user_profile' pk=post.author.pk %}"> {{ post.author }} </a>| {{ post.created_on }}</p>
+        <p class="card-text ">{{ post.content | safe }}</p>
+        {% if user.username == post.author.username or user.username == 'admin' %}
+        <a class="btn btn-primary" href="{% url 'update_post' pk=post.pk%}">Edit Post</a>
+        <a class="btn btn-danger" href="{% url 'post_remove' pk=post.pk %}">Delete Post</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

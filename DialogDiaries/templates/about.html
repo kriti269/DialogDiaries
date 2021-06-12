@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %} 
+<style>
+    body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    padding-left: 3%;
+    /* float: left; */
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+}
+
+
+img{
+  width: 280px;
+
+}
+
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  padding-left: 20%;
+  width:90%;
+  text-align: left;
+  /* background-color: #7c0507; */
+  color: rgb(0, 0, 0);
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  /* .columnTeam {
+    width: 100%;
+    display: block;
+  } */
+
+  .row{
+    flex-direction: column;
+    width: 100%;
+  }
+
+  img{
+    width: 100%;
+  }
+
+}
+</style>
+<div class="about-section">
+    <h2>WHO WE ARE?</h2>
+    <p>Dialog Diaries is basically a blog. A blogging refers to writing, photography, and other media that's
+         self-published online.Its renders an opportunity for individuals to 
+         write diary-style entries, but it has since been incorporated into websites 
+         for many businesses. The hallmarks of blogging include frequent updates, informal language,
+         and opportunities for readers to engage and start a conversation.</p>
+    
+    <h2>WHAT SHOULD YOU BLOG ABOUT?</h2>
+    <ul>
+        <li>Consider your passion.</li>
+        <p>Think about what you are interested in- maybe now, or what you 
+            were interested in years ago. I’ve heard of some bloggers “reviving” an old passion they had 
+            forgotten about and starting successful blogs around those passions.</p>
+        <li>Consider the blogs you read</li>
+        <p>What type of blog do you spend the most time on? What type of blog do you enjoy reading the most? 
+            Consider blogging on a similar topic. Make a blog that you would enjoy reading.</p>
+        <li>Focus on presenting solutions to problems</li>
+            <p>What problems or pain points do people have? Write a blog with the goal of helping others 
+                solve that problem.If enough people have the problem and your solutions are good enough, 
+                you have a successful blog on your hands</p>
+    </ul>
+  </div>
+
+  <h2 style="text-align:center">Our Team</h2>
+  <div class="row">
+    <div class="columnTeam">
+      <div class="card">
+        <img src="{% static 'images/emar.JPG'%}" alt="Emar" >
+        <div class="container">
+          <h2>Emar Morrison</h2>
+          <p>emarmorrison@gmail.com</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="columnTeam">
+        <div class="card">
+          
+          <img src="{% static 'images/team2.jpg'%}" alt="Gurpreet Kaur" >
+          <div class="container">
+            <h2>Gurpreet Kaur</h2>
+            <p>aulakhgurpreet92@gmail.com</p>
+          </div>
+        </div>
+      </div>
+
+    <div class="columnTeam">
+        <div class="card">
+          <img src="{% static 'images/gurpreet.jpg'%}" alt="Gurpreet Singh" >
+          <div class="container">
+            <h2>Gurpreet Singh</h2>
+            <p>gurpreetsingh05@gmail.com</p>
+          </div>
+        </div>
+    </div>
+    <div class="columnTeam">
+        <div class="card">
+          <img src="{% static 'images/jkb.jpg'%}" alt="Jatin Kumar Bhola" >
+          <div class="container">
+            <h3>Jatin Kumar Bhola</h3>
+            <p style="padding-top: 5px;">bholajatin88@gmail.com</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="columnTeam">
+        <div class="card">
+          <img src="{% static 'images/Kriti.jpg'%}" alt="Kriti" >
+          <div class="container">
+            <h2>Kriti</h2>
+            <p>kriti269@gmail.com</p>
+          </div>
+        </div>
+      </div>
+
+
+</div>
+{%endblock%}

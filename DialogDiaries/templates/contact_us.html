@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+    .contact-form-div{
+        margin-top: 5%;
+        text-align: center;
+        width: 100%;
+
+    }
+    .full_name,.email,.phone,.message{
+        width: 100%;
+        display: flex;
+        /* background-color: #F7F7F7; */
+        padding: 10px;
+    }
+    
+    label
+    {
+        width: 20%;
+        font-size: large;
+    }
+    span{
+        width: 100%;
+    }
+    button
+    {
+        background-color: #A90101;
+        width: 20%;
+        height: 10%;
+        color:honeydew ;
+    }
+
+    .btn-danger{
+        width: inherit;
+    }
+
+    textarea
+    {
+        width: 90%;
+        height: 80px;
+    }
+    
+</style>
+<div class="contact-form-div">
+    <h1>Contact Us</h1>
+    <form class="post-form" method="POST">
+        {% csrf_token %}
+        <div class="full_name">
+            <label for="full_name">Full Name</label>
+            <span>{{ form.full_name }}</span>
+        </div>
+        <div class="email">
+            <label for="email">Email</label>
+            <span>{{ form.email }}</span>
+        </div>
+        <div class="phone">
+            <label for="phone">Phone</label>
+            <span>{{ form.phone }}</span>
+        </div>
+        <div class="message">
+            <label for="message">Message</label>
+            <span id="message">{{ form.message}}</span>
+        </div>
+        <button type="submit" name="button">Save</button>
+    </form>
+</div>
+
+
+
+{%endblock%}

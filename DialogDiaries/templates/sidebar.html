@@ -1,0 +1,79 @@
+{% block sidebar %}
+
+<!-- Sidebar Widgets Column -->
+<div class="margin-top-left align-left">
+    <div class="card width-left">
+        <button id="addLike" data-url="{% url 'add_likes' %}" type="submit" class="btn">
+            <i class="fa fa-thumbs-up sidebar-icon fa-2x"></i>
+        </button>
+        <p id="likes" class="text-muted inline-view">{{ total_likes }}</p>
+        <span style="cursor:pointer" class="btn" id="comment_btn">
+            <i class="fa fa-comment sidebar-icon"></i>
+        </span>
+         <!--<button id="addComment" data-url="{% url 'add_comments' %}" type="submit" class="btn">
+
+         </button>-->
+        <p id="comments" class="text-muted inline-view">{{ total_comments }}</p>
+        <input type="hidden" id="post" name="post" value={{ post.slug }}>
+        <input type="hidden" id="token" name="token" value={{ csrf_token }}>
+        <input type="hidden" id="showCommentBar" name="showCommentBar" value={{ showCommentBar }}>
+        <input type="hidden" id="is_authenticated" name="is_authenticated" value={{ user.is_authenticated }}>
+        <input type="hidden" id="comments_url" name="comments_url" value="{% url 'add_comments' %}">
+        <input type="hidden" id="signIn_url" name="signIn_url" value="{% url 'sign_in' %}">
+        <input type="hidden" id="username" name="username" value="{{ user.username }}">
+         <input type="hidden" id="comment_url" name="comment_url" value="{% url 'post_user_profile' pk=user.pk %}">
+        <!--<p class="card-text"> Dialog Diaries was started with an
+        intent to bring people together and let them share their wonderful thoughts and ideas.</p>
+        <a href="#"
+           class="btn btn-danger">Know more!</a>-->
+    </div>
+    <div id="myNav" class="overlay">
+        <span class="response">Responses
+            {% if total_comments != 0 %}
+                (<span id="commentCount">{{ total_comments }}</span>)
+            {% endif %}
+        </span>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="comment-input">
+            <div id="commentErrorEmpty" class="comment-errors isa_error">
+                <i class="fa fa-times-circle"></i>Invalid input. Response cannot be empty!
+            </div>
+             <div id="commentErrorGreater" class="comment-errors isa_error">
+                <i class="fa fa-times-circle"></i>Invalid input. Response length must be less than 200!
+            </div>
+            {% if user_comment_count is None or user_comment_count == 0 %}
+                <input id="comment" type="text" placeholder="What are your thoughts?" >
+            {% endif %}
+        </div>
+        {% if user.is_authenticated and user_comment_count == 0 %}
+            <div class="align-btn">
+                <button type="button" data-url="{% url 'add_user_comments' %}" id="addUserComment" class="btn btn-login">Add Response</button>
+            </div>
+        {% endif %}
+        <div id="allCommentsDiv">
+        {% if total_comments == 0 %}
+            <div class="empty-comments">
+                <span>There are currently no responses on this post.<br/>
+                        Be the first to respond.
+                </span>
+            </div>
+        {% else %}
+            {% for comment in comment_list %}
+                {% if not forloop.first %}
+                    <hr style="width: 90%;">
+                {% endif %}
+                <div id="commentSection" class="mb-4">
+                    <div class="card-body details">
+                        <div class="detail">
+                            <p class="card-text">{{ comment.content }}</p>
+                            <p class="card-text text-muted h6"> <a href="{% url 'post_user_profile' pk=comment.posted_by.pk %}"> {{ comment.posted_by }} </a> | {{ comment.posted_on}}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock sidebar %}

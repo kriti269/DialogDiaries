@@ -1,0 +1,119 @@
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+.sign-in-bg{
+    background: url(../images/signinbg.jpg) round;
+    width: 50%;
+    height: 500px;
+    margin: 10px;
+    float: left;
+}
+
+.sign-in-container{
+    padding: 6%;
+}
+
+.sign-in-card{
+    float: right;
+    padding: 5%;
+    width: 47%;
+    height: 95%;
+    text-align: center;
+}
+
+.card{
+    display: inline-block;
+    width: 100%;
+}
+
+input{
+    overflow: visible;
+    padding: 10px;
+    border-radius: 0px 7px 7px 0px;
+    border-style: inset;
+    width: 95%;
+}
+
+input:focus{
+    outline: 0px;
+    box-shadow: 1px 2px 2px 1px brown;
+}
+
+.btn-register{
+    background: #ff5050;
+}
+
+.btn-login{
+    background: navajowhite;
+}
+
+.btn-area button{
+    width: 40%;
+}
+
+.btn-area{
+    margin: 10%;
+}
+
+.isa_error {
+    color: #D8000C;
+    background-color: #FFD2D2;
+}
+
+.isa_success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    padding-right: 10px;
+}
+
+.isa_error i, .isa_success i {
+    margin:10px 22px;
+    font-size:1em;
+    vertical-align:middle;
+}
+
+.input-container {
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  margin-bottom: 10%;
+  margin-top: 10%;
+}
+
+.icon {
+  padding: 15px;
+  background: #ff5050;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+  border-radius: 7px 0px 0px 7px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+}
+
+.sign-in-col{
+    margin-top: 10% !important;
+}
+
+@media only screen and (max-width: 1000px) {
+  .sign-in-bg{
+    display: none !important;
+  }
+  .sign-in-card{
+    float: none !important;
+    width: 100% !important;
+  }
+  .navbar-brand img{
+    width: 15%;
+  }
+}
+
+.first-name-container, .last-name-container, .email-container, .password2-container{
+    display: none;
+}
+
+.validation-error{
+    display: none;
+}
